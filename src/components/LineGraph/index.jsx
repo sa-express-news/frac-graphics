@@ -43,7 +43,7 @@ class LineGraph extends Component{
 
 	}
 
-	parseData = (object) =>{
+	parseData = (object: Object) =>{
 		let {county, field} = object;
 
 		let data = [
