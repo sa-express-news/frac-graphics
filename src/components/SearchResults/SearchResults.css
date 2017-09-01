@@ -1,0 +1,10 @@
+.SearchResults{
+	list-style-type: none;
+	max-height: 20vh;
+	overflow-y: auto;
+	margin: 0;
+}
+
+.SearchResult{
+	cursor: pointer;
+}
