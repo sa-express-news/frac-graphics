@@ -1,7 +1,10 @@
 // @flow
 
 import React, { Component } from 'react';
-import { VictoryChart, VictoryLine, VictoryAxis } from 'victory';
+import { VictoryChart, VictoryBar, VictoryAxis } from 'victory';
+
+import SearchBar from '../SearchBar';
+import SearchResults from '../SearchResults';
 
 import fracData from './avg-water-per-job.json';
 import './LineGraph.css';
@@ -10,7 +13,7 @@ class LineGraph extends Component{
 
 	state = {
 		currentCounty:{
-			name: 'Andrews',
+			county: 'Andrews',
 			field: 'Permian Basin',
 			data:[
 				{x: 2011, y: 11912.07},
@@ -20,26 +23,29 @@ class LineGraph extends Component{
 				{x: 2015, y: 1894438.489},
 				{x: 2016, y: 4277758.182},
 				{x: 2017, y: 2810132.542}]
-		}
+		},
+		searchResults: []
 	}
 
-	handleClick = () => {
+	handleSearchResultClick = (event: Event) => {
+		let target = event.target;
 
-		let data2 = [
-			{x: 2011, y: 417808.6},
-			{x: 2012, y: 1960882},
-			{x: 2013, y: 5930028.88},
-			{x: 2014, y: 7118517.709},
-			{x: 2015, y: 8231260.94},
-			{x: 2016, y: 8922795.442},
-			{x: 2017, y: 11968081.93}
-		];
+		if(target instanceof HTMLLIElement){
+			let selectedCounty = target.textContent;
 
-		let newCounty = this.parseData(fracData[2]);
+			let newCounty = this.state.searchResults.filter(matchesCountyName)[0];
 
-		this.setState(prevState => ({
-      		currentCounty: newCounty
-   		}));
+			this.setState(({
+	      		currentCounty: this.parseData(newCounty),
+	      		searchResults: []
+	   		}));
+
+			function matchesCountyName(countyData: Object){
+				return countyData.county === selectedCounty;
+			}			
+		}
+
+
 
 	}
 
@@ -63,17 +69,83 @@ class LineGraph extends Component{
 		};
 	}
 
+	handleSearchInput = (event: Event)=>{
+		let target = event.target;
+		if (target instanceof HTMLInputElement){
+			let searchInput = target.value;
+
+			this.searchForCounty(searchInput);
+		}
+
+	}
+
+	searchForCounty = (county: string) =>{
+		let caseInsensitiveRegEx = new RegExp(county, 'i');
+
+		let arrayOfCountyMatches = fracData.filter(matchesCountyName);
+
+		function matchesCountyName(countyData: Object){
+			return countyData.county.search(caseInsensitiveRegEx) !== -1;
+		}
+
+		this.setState(({
+      		searchResults: arrayOfCountyMatches
+   		}));
+	}
+
+	renderAllCounties = () => {
+		this.setState(({
+			searchResults: fracData
+		}));
+	}
+
+	handleSearchBarFocus = (event: Event) => {
+		let target = event.target;
+		if(target instanceof HTMLInputElement){
+			let searchInput = target.value;
+
+			if (searchInput === ''){
+				this.setState(({
+					searchResults: fracData
+				}));
+			}else{
+				this.searchForCounty(searchInput);
+			}			
+		}
+
+	}
+
+	clearSearchResults = () =>{
+		this.setState(({
+			searchResults: []
+		}));
+	}
+
 	render(){
+
+		// let axisStyle = {
+		// 	axisLabel: {fontSize: 15, margin: 20},
+		// };
+
+		let chartStyle = {
+			labels: {opacity: 0.5}
+		};
 
 		return(
 			<div className='LineGraph'>
-				<h1>Sick-ass chart</h1>
-				<button onClick={this.handleClick}>Change</button>
-				<VictoryChart domainPadding={10} animate={{duration: 500}}>
-					<VictoryAxis tickValues={[2011,2012,2013,2014,2015,2016,2017]}/>
-					<VictoryAxis dependentAxis tickFormat={(data) => (`${Math.floor(data) / 100000} gal`)}/>
-					<VictoryLine data={this.state.currentCounty.data}/>
+				<h2 className="LineGraphTitle">Average water use per frac job in Texas</h2>
+				<h3 className="County">{this.state.currentCounty.county} County</h3>
+				<div className='Search'>
+					<SearchBar placeholder={'Search by county'} onFocus={this.handleSearchBarFocus} keyUpCallback={this.handleSearchInput}/>
+					<SearchResults results={this.state.searchResults} handleClick={this.handleSearchResultClick}/>
+				</div>
+				<VictoryChart domainPadding={10} animate={{duration: 500}} style={chartStyle}>
+					<VictoryAxis label={'Year'} tickValues={[2011,2012,2013,2014,2015,2016,2017]}/>
+					<VictoryAxis dependentAxis label={'Million of gallons'} tickFormat={(data) => (`${Math.floor(data)/1000000}`)} />
+					<VictoryBar data={this.state.currentCounty.data}/>
 				</VictoryChart>
+				<p className="LineGraphChatter">Note: data was not available for all counties in all years. 2017 data calculated through July 15.</p>
+				<p className="LineGraphChatter">Source: FracFocus Chemical Disclosure Registry</p>
 			</div>
 
 		)
