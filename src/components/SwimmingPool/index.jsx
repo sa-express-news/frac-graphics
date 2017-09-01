@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 
+import WaterLevel from '../WaterLevel';
+
 import './SwimmingPool.css';
 
 export default class SwimmingPool extends Component{
@@ -16,13 +18,9 @@ export default class SwimmingPool extends Component{
 
 	render(){
 
-		const waterLevelStyle = {
-			height: `${this.props.fillPercent}%`
-		};
-
 		return(
 			<div className='SwimmingPool'>
-				<div className='WaterLevel' style={waterLevelStyle}/>
+				<WaterLevel height={this.props.fillPercent}/>
 			</div>
 
 		)
