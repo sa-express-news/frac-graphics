@@ -4,37 +4,37 @@ import React, { Component } from 'react';
 
 import './WaterLevel.css';
 
-export default class WaterLevel extends Component{
+export default class WaterLevel extends Component {
 	props: {
-		height: number
+		opacity: number
 	};
 
 	static defaultProps = {
-    	height: 0
-  	};
+		opacity: 0
+	};
 
-  	state = {
-  		height: 0
-  	}
+	state = {
+		opacity: 0
+	}
 
-  	componentDidMount(){
-  		setTimeout(this.updateHeight, 100);
-  	}
+	componentDidMount() {
+		setTimeout(this.updateOpacity, 1000);
+	}
 
-  	updateHeight = () =>{
+	updateOpacity = () => {
 		this.setState(() => ({
-	  		height: this.props.height
-		}));  	
-  	}
+			opacity: this.props.opacity
+		}));
+	}
 
-	render(){
+	render() {
 
 		const waterLevelStyle = {
-			height: `${this.state.height}%`
+			opacity: `${this.state.opacity}`
 		};
 
-		return(
-			<div className='WaterLevel' style={waterLevelStyle}/>
+		return (
+			<div className='WaterLevel' style={waterLevelStyle} />
 		)
 	}
 }

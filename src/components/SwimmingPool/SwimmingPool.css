@@ -1,6 +1,6 @@
 .SwimmingPool {
     border: 1px solid gray;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-flow: column-reverse nowrap;
     height: 10vh;
