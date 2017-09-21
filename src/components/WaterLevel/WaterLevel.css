@@ -1,9 +1,0 @@
-.WaterLevel {
-    background: #44ABDF;
-/*    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;*/
-    border-radius: 5px;
-    height: 100%;
-    width: 100%;
-    transition: opacity .35s linear;
-}

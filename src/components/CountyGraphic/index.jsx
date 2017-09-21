@@ -125,24 +125,28 @@ class CountyGraphic extends Component {
 
 		// let axisStyle = {
 		// 	axisLabel: {fontSize: 15, margin: 20},
-		// };
+		// };'
 
-		let chartStyle = {
-			labels: { opacity: 0.5 }
+		let testStyle = {
+			tickLabels: {
+				fontSize: 16
+			}
 		};
 
+		//FCC10F or a 379D92
+
 		return (
-			<div className='LineGraph'>
+			<div className='CountyGraphic'>
 				<h2 className="LineGraphTitle">Average water use per frac job in Texas</h2>
-				<h3 className="County">{this.state.currentCounty.county} County</h3>
 				<div className='Search'>
 					<SearchBar placeholder={'Search by county'} onFocus={this.handleSearchBarFocus} keyUpCallback={this.handleSearchInput} />
 					<SearchResults results={this.state.searchResults} handleClick={this.handleSearchResultClick} />
 				</div>
-				<VictoryChart domainPadding={10} animate={{ duration: 500 }} style={chartStyle}>
-					<VictoryAxis label={'Year'} tickValues={[2011, 2012, 2013, 2014, 2015, 2016, 2017]} />
-					<VictoryAxis dependentAxis label={'Millions of gallons'} tickFormat={(data) => (`${Math.floor(data) / 1000000}`)} />
-					<VictoryBar data={this.state.currentCounty.data} />
+				<h3 className="County">{this.state.currentCounty.county} County</h3>
+				<VictoryChart domainPadding={10} animate={{ duration: 500 }} style={testStyle}>
+					<VictoryAxis label={'Year'} tickValues={[2011, 2012, 2013, 2014, 2015, 2016, 2017]} style={testStyle} />
+					<VictoryAxis dependentAxis label={'Millions of gallons'} tickFormat={(data) => (`${Math.floor(data) / 1000000}`)} style={testStyle} />
+					<VictoryBar data={this.state.currentCounty.data} style={{ data: { fill: '#379D92' } }} />
 				</VictoryChart>
 				<p className="LineGraphChatter">Note: data was not available for all counties in all years. 2017 data calculated through July 15.</p>
 				<p className="LineGraphChatter">Source: FracFocus Chemical Disclosure Registry</p>
