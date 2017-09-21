@@ -1,0 +1,14 @@
+.SwipeButtonContainer{
+    font-size: 275%;
+    opacity: .8;
+    position: absolute;
+    top: 30%;
+}
+
+.SwipeButtonContainer.Left{
+    left: 0;
+}
+
+.SwipeButtonContainer.Right{
+    right: 0;
+}
