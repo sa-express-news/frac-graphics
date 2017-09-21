@@ -24,7 +24,8 @@ class CountyGraphic extends Component {
 				{ x: 2016, y: 4277758.182 },
 				{ x: 2017, y: 2810132.542 }]
 		},
-		searchResults: []
+		searchResults: [],
+		isDesktopScreen: false
 	}
 
 	handleSearchResultClick = (event: Event) => {
@@ -121,15 +122,27 @@ class CountyGraphic extends Component {
 		}));
 	}
 
+	setIsDesktop = () => {
+		//We check height because iPad Pros are 1024x1366, and our desktop story top looks awful on them.
+		const isDesktopScreen = window.innerWidth > 1023 && window.innerHeight !== 1366;
+		if (isDesktopScreen !== this.state.isDesktopScreen) {
+			this.setState({ isDesktopScreen });
+		}
+	}
+
+	componentDidMount() {
+		this.setIsDesktop();
+		window.addEventListener('resize', this.setIsDesktop);
+	}
+
 	render() {
 
-		// let axisStyle = {
-		// 	axisLabel: {fontSize: 15, margin: 20},
-		// };'
-
-		let testStyle = {
+		let axisStyle = {
 			tickLabels: {
-				fontSize: 16
+				fontSize: this.state.isDesktopScreen ? 14 : 18
+			},
+			label: {
+				fontSize: this.state.isDesktopScreen ? 14 : 18
 			}
 		};
 
@@ -143,14 +156,14 @@ class CountyGraphic extends Component {
 					<SearchResults results={this.state.searchResults} handleClick={this.handleSearchResultClick} />
 				</div>
 				<h3 className="County">{this.state.currentCounty.county} County</h3>
-				<VictoryChart domainPadding={10} animate={{ duration: 500 }} style={testStyle}>
-					<VictoryAxis label={'Year'} tickValues={[2011, 2012, 2013, 2014, 2015, 2016, 2017]} style={testStyle} />
-					<VictoryAxis dependentAxis label={'Millions of gallons'} tickFormat={(data) => (`${Math.floor(data) / 1000000}`)} style={testStyle} />
+				<VictoryChart domainPadding={10} animate={{ duration: 500 }} style={axisStyle}>
+					<VictoryAxis label={'Year'} tickValues={[2011, 2012, 2013, 2014, 2015, 2016, 2017]} style={axisStyle} />
+					<VictoryAxis dependentAxis label={'Millions of gallons'} tickFormat={(data) => (`${Math.floor(data) / 1000000}`)} style={axisStyle} />
 					<VictoryBar data={this.state.currentCounty.data} style={{ data: { fill: '#379D92' } }} />
 				</VictoryChart>
 				<p className="LineGraphChatter">Note: data was not available for all counties in all years. 2017 data calculated through July 15.</p>
 				<p className="LineGraphChatter">Source: FracFocus Chemical Disclosure Registry</p>
-			</div>
+			</div >
 
 		)
 	}
