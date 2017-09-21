@@ -1,9 +1,0 @@
-.SwimmingPool {
-    border: 1px solid gray;
-    border-radius: 5px;
-    display: flex;
-    flex-flow: column-reverse nowrap;
-    height: 10vh;
-    margin: .15em 0;
-    width: 18vw;
-}
