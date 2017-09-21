@@ -139,10 +139,10 @@ class CountyGraphic extends Component {
 
 		let axisStyle = {
 			tickLabels: {
-				fontSize: this.state.isDesktopScreen ? 14 : 18
+				fontSize: this.state.isDesktopScreen ? 14 : 21
 			},
 			label: {
-				fontSize: this.state.isDesktopScreen ? 14 : 18
+				fontSize: this.state.isDesktopScreen ? 14 : 21
 			}
 		};
 
