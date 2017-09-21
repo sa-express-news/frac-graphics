@@ -2,15 +2,21 @@
 
 import React, { Component } from 'react';
 
+import SwipeButton from '../SwipeButton';
+
+import './SwipeContainer.css';
+
 export default class SwipeContainer extends Component {
 	props: {
 		swipeLeftFunction: Function,
 		swipeRightFunction: Function,
 		timeThreshold: number,
+		arrows: boolean,
 		children: any,
 	}
 
 	static defaultProps = {
+		arrows: true,
 		timeThreshold: 400,
 	};
 
@@ -56,9 +62,20 @@ export default class SwipeContainer extends Component {
 	}
 
 	render() {
+		const showArrows = this.props.arrows;
+
+		let buttons = null;
+		if (showArrows) {
+			buttons =
+				<div>
+					<SwipeButton left={true} leftClickFunction={this.props.swipeLeftFunction} />
+					<SwipeButton left={false} rightClickFunction={this.props.swipeRightFunction} />
+				</div>;
+		}
 		return (
 			<div className='SwipeContainer' onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
 				{this.props.children}
+				{buttons}
 			</div>
 		)
 	}

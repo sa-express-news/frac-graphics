@@ -4,5 +4,6 @@
     display: flex;
     flex-flow: column-reverse nowrap;
     height: 10vh;
-    width: 8vw;
+    margin: .15em 0;
+    width: 18vw;
 }

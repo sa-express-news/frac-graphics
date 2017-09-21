@@ -11,7 +11,7 @@ import './index.css';
 
 import '../node_modules/grommet/scss/vanilla/index.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('swimming-pools'));
 
 // *** REACT W/ REDUX ***
 

@@ -13,15 +13,15 @@ export default class SwimmingPoolGraphic extends Component {
 		fields: [
 			{
 				name: 'Permian Basin',
-				avgWater: 10496987.86
+				avgWater: 9974654.011
 			},
 			{
 				name: 'Eagle Ford',
-				avgWater: 9733680.749
+				avgWater: 8375422.219
 			},
 			{
 				name: 'Barnett Shale',
-				avgWater: 1846268
+				avgWater: 2498724.452
 			}
 
 		],
@@ -81,14 +81,17 @@ export default class SwimmingPoolGraphic extends Component {
 		const pools = this.generatePoolComponents(numberOfPools);
 
 		return (
-			<SwipeContainer swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
+			<div className='SwimmingPoolGraphic'>
 				<h3>{currentCounty.name}</h3>
-				<p>The average frac job used {currentCounty.avgWater} gallons of water.</p>
-				<p>That's enough to fill {numberOfPools.toFixed(2)} Olympic swimming pools.</p>
-				<div className='PoolContainer'>
-					{pools}
-				</div>
-			</SwipeContainer>
+				<p>In 2016, the average frac job used <span className='PoolText'> {currentCounty.avgWater} </span> gallons of water.</p>
+				<p>That's enough to fill <span classname='PoolText'> {numberOfPools.toFixed(2)} </span> Olympic swimming pools.</p>
+				<p>Click the arrows or swipe your screen to see data for other oil fields.</p>
+				<SwipeContainer swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
+					<div className='PoolContainer'>
+						{pools}
+					</div>
+				</SwipeContainer>
+			</div>
 		)
 	}
 }
