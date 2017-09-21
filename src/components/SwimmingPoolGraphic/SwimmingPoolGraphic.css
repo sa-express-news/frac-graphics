@@ -1,7 +1,20 @@
+.SwimmingPoolGraphic h3 {
+	font-weight: bold;
+}
+
+.SwimmingPoolGraphic p{
+	margin: .35em 0; 
+}
+
 .PoolContainer{
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: space-between;
+}
+
+@media (max-width: 549px){
+	.PoolContainer{
+		justify-content: space-between;
+	}
 }
 
 .PoolText{

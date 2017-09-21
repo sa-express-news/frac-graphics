@@ -12,3 +12,7 @@
 .SwipeButtonContainer.Right{
     right: 0;
 }
+
+.SwipeButton{
+    cursor: pointer;
+}

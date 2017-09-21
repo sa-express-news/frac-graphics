@@ -82,10 +82,10 @@ export default class SwimmingPoolGraphic extends Component {
 
 		return (
 			<div className='SwimmingPoolGraphic'>
-				<h3>{currentCounty.name}</h3>
-				<p>In 2016, the average frac job used <span className='PoolText'> {currentCounty.avgWater} </span> gallons of water.</p>
-				<p>That's enough to fill <span classname='PoolText'> {numberOfPools.toFixed(2)} </span> Olympic swimming pools.</p>
-				<p>Click the arrows or swipe your screen to see data for other oil fields.</p>
+				<h3>Average Water Use Per Frac Job - {currentCounty.name}</h3>
+				<p>In 2016, the average {currentCounty.name} frac job used <span className='PoolText'> {currentCounty.avgWater} </span> gallons of water.</p>
+				<p>That's enough to fill <span className='PoolText'> {numberOfPools.toFixed(2)} </span> Olympic swimming pools.</p>
+				<p>Click the arrows or swipe your screen to see how other oil fields compare.</p>
 				<SwipeContainer swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
 					<div className='PoolContainer'>
 						{pools}
