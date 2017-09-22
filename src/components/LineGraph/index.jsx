@@ -20,7 +20,7 @@ export default class LineGraph extends Component {
     };
 
     updateIndex = (newIndex: number) => {
-        if (newIndex > this.state.fields.length - 1) {
+        if (newIndex > this.props.data.length - 1) {
             this.setState(() => ({
                 currentFieldIndex: 0
             }));
@@ -47,8 +47,8 @@ export default class LineGraph extends Component {
 
         const currentFieldIndex = this.state.currentFieldIndex;
         return (
-            <div className='Production'>
-                <h2>{this.props.title}</h2>
+            <div className='LineGraph'>
+                <h3 className='graphic-title'>{this.props.title}</h3>
                 <h3>{this.props.data[currentFieldIndex].field} region</h3>
                 <SwipeContainer swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
                     <VictoryChart domainPadding={10} animate={{ duration: 500 }}>

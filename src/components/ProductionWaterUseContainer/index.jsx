@@ -29,9 +29,17 @@ export default class ProductionWaterUseContainer extends Component {
         let component = null;
 
         if (this.state.production) {
-            component = <LineGraph data={productionData} title={'Total oil production'} yearValues={[2010, 2011, 2012, 2013, 2014, 2015, 2016]} dependentAxisLabel={'Barrels of oil'} />
+            component =
+                <div>
+                    <p className='graphic-chatter'>Oil production continues to rise in the Permian Basin, though it dropped in the Eagle Ford area last year.</p>
+                    <LineGraph data={productionData} title={'Total oil production'} yearValues={[2010, 2011, 2012, 2013, 2014, 2015, 2016]} dependentAxisLabel={'Barrels of oil'} />
+                </div>
         } else {
-            component = <LineGraph data={waterUseData} title={'Total water use'} yearValues={[2011, 2012, 2013, 2014, 2015, 2016]} dependentAxisLabel={'Gallons of water'} />
+            component =
+                <div>
+                    <p className='graphic-chatter'>Though the average frac job in Texas uses more water than it used to, many parts of the state are seeing less overall water use in fracking.</p>
+                    <LineGraph data={waterUseData} title={'Total water use'} yearValues={[2011, 2012, 2013, 2014, 2015, 2016]} dependentAxisLabel={'Gallons of water'} />
+                </div>
         }
         return (
             <div className='ProductionContainer'>
