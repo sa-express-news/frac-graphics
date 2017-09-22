@@ -12,33 +12,6 @@ p.graphic-chatter{
 	font-size: 17px;
 }
 
-div.graphic-toggle{
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-}
-
-div.graphic-toggle p{
-    background: #ddd;
-    border-radius: 3px;
-	cursor: pointer;
-	flex-basis: 31%;
-	font-size: 16px;
-	margin: 0 .25em;
-    padding: .2em;
-    text-align: center;
-}
-
-@media (min-width: 700px){
-    div.graphic-toggle p{
-        flex-basis: 22%;
-    }
-}
-
-div.graphic-toggle p.active{
-    background: #379d92;
-}
-
 p.region{
 	font-weight: bold;
 }
