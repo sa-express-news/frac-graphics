@@ -13,7 +13,7 @@
 
 @media (max-width: 549px){
 	.PoolContainer{
-		justify-content: space-between;
+		/* justify-content: space-between; */
 	}
 }
 

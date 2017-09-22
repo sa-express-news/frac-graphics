@@ -2,8 +2,9 @@
     border: 1px solid gray;
     border-radius: 5px;
     display: flex;
+    flex-basis: 10%;
     flex-flow: column-reverse nowrap;
     height: 10vh;
     margin: .15em 0;
-    width: 4em;
+    /* width: 4em; */
 }

@@ -12,10 +12,6 @@ p.graphic-chatter{
 	font-size: 17px;
 }
 
-div.graphic-toggle p{
-	font-size: 16px;
-}
-
 div.graphic-toggle{
     display: flex;
     flex-flow: row nowrap;
@@ -25,8 +21,10 @@ div.graphic-toggle{
 div.graphic-toggle p{
     background: #ccc;
     border-radius: 3px;
-    cursor: pointer;
-    flex-basis: 31%;
+	cursor: pointer;
+	flex-basis: 31%;
+	font-size: 16px;
+	margin: 0 .25em;
     padding: .2em;
     text-align: center;
 }
