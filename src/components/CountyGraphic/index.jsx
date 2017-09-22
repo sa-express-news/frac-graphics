@@ -16,13 +16,13 @@ class CountyGraphic extends Component {
 			county: 'Andrews',
 			field: 'Permian Basin',
 			data: [
-				{ x: 2011, y: 11912.07 },
-				{ x: 2012, y: 143652.6 },
-				{ x: 2013, y: 700725.2131 },
-				{ x: 2014, y: 900312.8612 },
-				{ x: 2015, y: 1894438.489 },
-				{ x: 2016, y: 4277758.182 },
-				{ x: 2017, y: 2810132.542 }]
+				{ x: 2011, y: 11912.07, width: 40 },
+				{ x: 2012, y: 143652.6, width: 40 },
+				{ x: 2013, y: 700725.2131, width: 40 },
+				{ x: 2014, y: 900312.8612, width: 40 },
+				{ x: 2015, y: 1894438.489, width: 40 },
+				{ x: 2016, y: 4277758.182, width: 40 },
+				{ x: 2017, y: 2810132.542, width: 40 }]
 		},
 		searchResults: [],
 		isDesktopScreen: false
@@ -54,13 +54,13 @@ class CountyGraphic extends Component {
 		let { county, field } = object;
 
 		let data = [
-			{ x: 2011, y: object[2011] },
-			{ x: 2012, y: object[2012] },
-			{ x: 2013, y: object[2013] },
-			{ x: 2014, y: object[2014] },
-			{ x: 2015, y: object[2015] },
-			{ x: 2016, y: object[2016] },
-			{ x: 2017, y: object[2017] }
+			{ x: 2011, y: object[2011], width: 40 },
+			{ x: 2012, y: object[2012], width: 40 },
+			{ x: 2013, y: object[2013], width: 40 },
+			{ x: 2014, y: object[2014], width: 40 },
+			{ x: 2015, y: object[2015], width: 40 },
+			{ x: 2016, y: object[2016], width: 40 },
+			{ x: 2017, y: object[2017], width: 40 }
 		];
 
 		return {
@@ -145,8 +145,6 @@ class CountyGraphic extends Component {
 				fontSize: this.state.isDesktopScreen ? 14 : 21
 			}
 		};
-
-		//FCC10F or a 379D92
 
 		return (
 			<div className='CountyGraphic'>
