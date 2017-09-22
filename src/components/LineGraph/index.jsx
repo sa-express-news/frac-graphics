@@ -9,7 +9,6 @@ import SwipeContainer from '../SwipeContainer';
 export default class LineGraph extends Component {
     props: {
         data: Object[],
-        title: string,
         yearValues: number[],
         dependentAxisLabel: string,
         dependentAxisFormat: Function
@@ -58,13 +57,12 @@ export default class LineGraph extends Component {
         }
         return (
             <div className='LineGraph'>
-                <h3 className='graphic-title'>{this.props.title}</h3>
                 <h3>{this.props.data[currentFieldIndex].field} region</h3>
-                <SwipeContainer swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
+                <SwipeContainer arrows={false} swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
                     <VictoryChart domainPadding={10} animate={{ duration: 500 }}>
                         <VictoryAxis label={'Year'} tickValues={this.props.yearValues} />
                         <VictoryAxis dependentAxis label={this.props.dependentAxisLabel} tickFormat={this.props.dependentAxisFormat} />
-                        <VictoryLine data={this.props.data[currentFieldIndex].data} />
+                        <VictoryLine data={this.props.data[currentFieldIndex].data} style={{ fill: '#379d92' }} />
                     </VictoryChart>
                 </SwipeContainer>
             </div>

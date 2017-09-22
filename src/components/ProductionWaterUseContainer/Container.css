@@ -1,0 +1,25 @@
+.graphic-toggle{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+
+.graphic-toggle p{
+    background: #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    flex-basis: 33%;
+    padding: .2em;
+    text-align: center;
+}
+
+@media (min-width: 700px){
+    .graphic-toggle p{
+        flex-basis: 22%;
+    }
+}
+
+.graphic-toggle p.active{
+    background: #379d92;
+}
+
