@@ -19,3 +19,8 @@ div.graphic-toggle p{
 p.region{
 	font-weight: bold;
 }
+
+p.graphic-source{
+	font-style: italic;
+	font-size: 13px;
+}
