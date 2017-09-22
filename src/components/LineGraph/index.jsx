@@ -11,7 +11,8 @@ export default class LineGraph extends Component {
         data: Object[],
         title: string,
         yearValues: number[],
-        dependentAxisLabel: string
+        dependentAxisLabel: string,
+        dependentAxisFormat: Function
     };
 
     state = {
@@ -43,9 +44,18 @@ export default class LineGraph extends Component {
         this.updateIndex(this.state.currentFieldIndex - 1);
     }
 
+    resetFieldIndex = () => {
+        this.setState(() => ({
+            currentFieldIndex: 0
+        }));
+    }
+
     render() {
 
         const currentFieldIndex = this.state.currentFieldIndex;
+        if (!this.props.data[currentFieldIndex]) {
+            this.resetFieldIndex();
+        }
         return (
             <div className='LineGraph'>
                 <h3 className='graphic-title'>{this.props.title}</h3>
@@ -53,7 +63,7 @@ export default class LineGraph extends Component {
                 <SwipeContainer swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
                     <VictoryChart domainPadding={10} animate={{ duration: 500 }}>
                         <VictoryAxis label={'Year'} tickValues={this.props.yearValues} />
-                        <VictoryAxis dependentAxis label={this.props.dependentAxisLabel} />
+                        <VictoryAxis dependentAxis label={this.props.dependentAxisLabel} tickFormat={this.props.dependentAxisFormat} />
                         <VictoryLine data={this.props.data[currentFieldIndex].data} />
                     </VictoryChart>
                 </SwipeContainer>
