@@ -51,6 +51,7 @@ export default class ProductionWaterUseContainer extends Component {
                     <p className={`${!this.state.production ? 'active' : ''}`} onClick={this.showWaterUse}>Water Use</p>
                 </div>
                 {component}
+                <p className='graphic-source'>Source: FracFocus Chemical Disclosure Registry, U.S. Energy Information Administration</p>
             </div>
         )
     }
