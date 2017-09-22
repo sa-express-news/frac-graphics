@@ -44,3 +44,8 @@ div.graphic-toggle p.active{
 p.region{
 	font-weight: bold;
 }
+
+p.graphic-source{
+	font-style: italic;
+	font-size: 13px;
+}

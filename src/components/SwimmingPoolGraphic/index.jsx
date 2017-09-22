@@ -97,6 +97,7 @@ export default class SwimmingPoolGraphic extends Component {
 						{pools}
 					</div>
 				</SwipeContainer>
+				<p className='graphic-source'>Source: FracFocus Chemical Disclosure Registry.</p>
 			</div>
 		)
 	}
