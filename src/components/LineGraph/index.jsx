@@ -16,7 +16,8 @@ export default class LineGraph extends Component {
 
     state = {
         fields: this.props.data,
-        currentFieldIndex: 0
+        currentFieldIndex: 0,
+        isDesktopScreen: false
     };
 
     updateIndex = (newIndex: number) => {
@@ -49,20 +50,50 @@ export default class LineGraph extends Component {
         }));
     }
 
+    setIsDesktop = () => {
+        //We check height because iPad Pros are 1024x1366, and our desktop story top looks awful on them.
+        const isDesktopScreen = window.innerWidth > 1023 && window.innerHeight !== 1366;
+        if (isDesktopScreen !== this.state.isDesktopScreen) {
+            this.setState({ isDesktopScreen });
+        }
+    }
+
+    componentDidMount() {
+        this.setIsDesktop();
+        window.addEventListener('resize', this.setIsDesktop);
+    }
+
     render() {
+
+        let axisStyle = {
+            tickLabels: {
+                fontSize: this.state.isDesktopScreen ? 14 : 21
+            },
+            label: {
+                fontSize: this.state.isDesktopScreen ? 14 : 21
+            }
+        };
 
         const currentFieldIndex = this.state.currentFieldIndex;
         if (!this.props.data[currentFieldIndex]) {
             this.resetFieldIndex();
         }
+
+        let selectors = this.props.data.map((field, index) => {
+            return <p onClick={() => this.updateIndex(index)} key={index}>{field.field}</p>
+        });
+
         return (
             <div className='LineGraph'>
-                <h3>{this.props.data[currentFieldIndex].field} region</h3>
+                <div className='graphic-toggle'>
+                    {selectors}
+                </div>
+                <p className='region'>{this.props.data[currentFieldIndex].field} region</p>
                 <SwipeContainer arrows={false} swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
-                    <VictoryChart domainPadding={10} animate={{ duration: 500 }}>
-                        <VictoryAxis label={'Year'} tickValues={this.props.yearValues} />
-                        <VictoryAxis dependentAxis label={this.props.dependentAxisLabel} tickFormat={this.props.dependentAxisFormat} />
-                        <VictoryLine data={this.props.data[currentFieldIndex].data} style={{ fill: '#379d92' }} />
+                    <VictoryChart domainPadding={10} animate={{ duration: 500 }} style={{ data: { fill: 'tomato' } }} >
+                        <VictoryAxis label={'Year'} tickValues={this.props.yearValues} style={axisStyle} />
+                        <VictoryAxis dependentAxis label={this.props.dependentAxisLabel} tickFormat={this.props.dependentAxisFormat} style={axisStyle} />
+                        <VictoryLine data={this.props.data[currentFieldIndex].data} style={{ data: { stroke: '#379D92' } }} />
                     </VictoryChart>
                 </SwipeContainer>
             </div>
