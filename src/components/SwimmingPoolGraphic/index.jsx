@@ -80,13 +80,19 @@ export default class SwimmingPoolGraphic extends Component {
 
 		const pools = this.generatePoolComponents(numberOfPools);
 
+		let selectors = this.state.fields.map((field, index) => {
+			return <p className={`${index === this.state.currentFieldIndex ? 'active' : ''}`} onClick={() => this.updateIndex(index)} key={index}>{field.name}</p>
+		});
+
 		return (
 			<div className='SwimmingPoolGraphic'>
-				<h3>Average Water Use Per Frac Job - {currentCounty.name}</h3>
-				<p>In 2016, the average {currentCounty.name} frac job used <span className='PoolText'> {currentCounty.avgWater} </span> gallons of water.</p>
-				<p>That's enough to fill <span className='PoolText'> {numberOfPools.toFixed(2)} </span> Olympic swimming pools.</p>
-				<p>Click the arrows or swipe your screen to see how other oil fields compare.</p>
-				<SwipeContainer swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
+				<h3 className='graphic-title'>Average Water Use Per Frac Job - {currentCounty.name}</h3>
+				<div className='graphic-toggle'>
+					{selectors}
+				</div>
+				<p className='graphic-chatter'>In 2016, the average {currentCounty.name} frac job used <span className='PoolText'> {currentCounty.avgWater} </span> gallons of water.</p>
+				<p className='graphic-chatter'>That's enough to fill <span className='PoolText'> {numberOfPools.toFixed(2)} </span> Olympic swimming pools.</p>
+				<SwipeContainer arrows={false} swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
 					<div className='PoolContainer'>
 						{pools}
 					</div>
