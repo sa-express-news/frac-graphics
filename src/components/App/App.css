@@ -1,12 +1,21 @@
 .App {
 	color: #333;
 	font-family: Helvetica, Arial, sans-serif;
-	line-height: 1.2;
 }
 
+h3.graphic-title{
+	font-weight: bold;
+	font-size: 22px;
+}
 
-@media (min-width: 768px){
-	.App{
-		line-height: 1.45;
-	}
+p.graphic-chatter{
+	font-size: 17px;
+}
+
+div.graphic-toggle p{
+	font-size: 16px;
+}
+
+p.region{
+	font-weight: bold;
 }
