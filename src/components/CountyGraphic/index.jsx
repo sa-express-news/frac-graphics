@@ -150,9 +150,9 @@ class CountyGraphic extends Component {
 
 		return (
 			<div className='CountyGraphic'>
-				<h2 className="LineGraphTitle">Average water use per frac job in Texas</h2>
+				<h3 className="graphic-title">Average water use per frac job in Texas</h3>
 				<div className='Search'>
-					<SearchBar placeholder={'Search by county'} onFocus={this.handleSearchBarFocus} keyUpCallback={this.handleSearchInput} />
+					<SearchBar placeholder={'Search Texas counties'} onFocus={this.handleSearchBarFocus} keyUpCallback={this.handleSearchInput} />
 					<SearchResults results={this.state.searchResults} handleClick={this.handleSearchResultClick} />
 				</div>
 				<h3 className="County">{this.state.currentCounty.county} County</h3>
@@ -161,8 +161,7 @@ class CountyGraphic extends Component {
 					<VictoryAxis dependentAxis label={'Millions of gallons'} tickFormat={(data) => (`${Math.floor(data) / 1000000}`)} style={axisStyle} />
 					<VictoryBar data={this.state.currentCounty.data} style={{ data: { fill: '#379D92' } }} />
 				</VictoryChart>
-				<p className="LineGraphChatter">Note: data was not available for all counties in all years. 2017 data calculated through July 15.</p>
-				<p className="LineGraphChatter">Source: FracFocus Chemical Disclosure Registry</p>
+				<p className="graphic-source">Source: FracFocus Chemical Disclosure Registry. Data was not available for all counties in all years. 2017 data calculated through July 15.</p>
 			</div >
 
 		)
