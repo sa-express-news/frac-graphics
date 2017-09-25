@@ -34,7 +34,10 @@ export default class WaterLevel extends Component {
 		};
 
 		return (
-			<div className='WaterLevel' style={waterLevelStyle} />
+			<div className='WaterLevel' style={waterLevelStyle}>
+				<div className='PoolLine' />
+				<div className='PoolLine' />
+			</div>
 		)
 	}
 }

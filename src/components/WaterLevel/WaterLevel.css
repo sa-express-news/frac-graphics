@@ -7,3 +7,12 @@
     width: 100%;
     transition: opacity .2s linear;
 }
+
+.PoolLine{
+    background:#888;
+    display: inline-block;
+    height: 10vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    width: 1vw;    
+}
