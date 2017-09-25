@@ -7,7 +7,7 @@ import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
 
 import fracData from './avg-water-per-job.json';
-import './LineGraph.css';
+import './CountyGraphic.css';
 
 class CountyGraphic extends Component {
 
@@ -105,11 +105,7 @@ class CountyGraphic extends Component {
 		if (target instanceof HTMLInputElement) {
 			let searchInput = target.value;
 
-			if (searchInput === '') {
-				this.setState(({
-					searchResults: fracData
-				}));
-			} else {
+			if (searchInput.length > 1) {
 				this.searchForCounty(searchInput);
 			}
 		}
