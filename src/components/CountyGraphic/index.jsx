@@ -34,20 +34,23 @@ class CountyGraphic extends Component {
 		if (target instanceof HTMLLIElement) {
 			let selectedCounty = target.textContent;
 
-			let newCounty = this.state.searchResults.filter(matchesCountyName)[0];
+			this.selectCounty(selectedCounty);
 
-			this.setState(({
-				currentCounty: this.parseData(newCounty),
-				searchResults: []
-			}));
-
-			function matchesCountyName(countyData: Object) {
-				return countyData.county === selectedCounty;
-			}
 		}
+	}
 
+	selectCounty = (county: string) => {
 
+		let selected = this.state.searchResults.filter(matchesCountyName)[0];
 
+		this.setState(({
+			currentCounty: this.parseData(selected),
+			searchResults: []
+		}));
+
+		function matchesCountyName(countyData: Object) {
+			return countyData.county === county;
+		}
 	}
 
 	parseData = (object: Object) => {
@@ -72,12 +75,17 @@ class CountyGraphic extends Component {
 
 	handleSearchInput = (event: Event) => {
 		let target = event.target;
-		if (target instanceof HTMLInputElement) {
+		if (event.keyCode === 40 && this.state.searchResults.length > 0) {
+			console.log('searching');
+		}
+		else if (target instanceof HTMLInputElement) {
 			let searchInput = target.value;
 
-			this.searchForCounty(searchInput);
-		}
+			if (searchInput.length > 0) {
+				this.searchForCounty(searchInput);
 
+			}
+		}
 	}
 
 	searchForCounty = (county: string) => {
@@ -105,11 +113,10 @@ class CountyGraphic extends Component {
 		if (target instanceof HTMLInputElement) {
 			let searchInput = target.value;
 
-			if (searchInput.length > 1) {
+			if (searchInput.length > 0) {
 				this.searchForCounty(searchInput);
 			}
 		}
-
 	}
 
 	clearSearchResults = () => {
