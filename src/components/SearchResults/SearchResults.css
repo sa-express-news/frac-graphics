@@ -1,8 +1,11 @@
 .SearchResults{
+	background: white;
 	list-style-type: none;
+	margin: 0;
 	max-height: 20vh;
 	overflow-y: auto;
-	margin: 0;
+	position: absolute;
+	width: 100%;
 }
 
 .SearchResult{
