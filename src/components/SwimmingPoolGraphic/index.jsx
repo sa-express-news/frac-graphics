@@ -39,7 +39,7 @@ export default class SwimmingPoolGraphic extends Component {
 		const finalPoolFillLevel = (num - numberOfFullPools) / 10;
 
 		let pools = Array(numberOfFullPools).fill(0).map((el, index) => {
-			return <SwimmingPool opacity={1} key={index} />
+			return <SwimmingPool opacity={1} key={Math.random()} />
 		});
 
 		pools.push(<SwimmingPool opacity={finalPoolFillLevel} key={Math.random()} />);
@@ -90,7 +90,7 @@ export default class SwimmingPoolGraphic extends Component {
 				<div className='graphic-toggle'>
 					{selectors}
 				</div>
-				<p className='graphic-chatter'>In 2016, the average {currentCounty.name} frac job used <span className='PoolText'> {currentCounty.avgWater} </span> gallons of water.</p>
+				<p className='graphic-chatter'>In 2016, the average {currentCounty.name} frac job used <span className='PoolText'> {currentCounty.avgWater.toLocaleString()} </span> gallons of water.</p>
 				<p className='graphic-chatter'>That's enough to fill <span className='PoolText'> {numberOfPools.toFixed(2)} </span> Olympic swimming pools.</p>
 				<SwipeContainer arrows={false} swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
 					<div className='PoolContainer'>
