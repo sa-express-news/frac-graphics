@@ -153,15 +153,15 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css!sass?outputStyle=compressed&' +
-        'includePaths[]=' +
-        (encodeURIComponent(
-          path.resolve(process.cwd(), './node_modules')
-        )) +
-        '&includePaths[]=' +
-        (encodeURIComponent(
-          path.resolve(process.cwd(),
-            './node_modules/grommet/node_modules'))
-        )
+          'includePaths[]=' +
+          (encodeURIComponent(
+            path.resolve(process.cwd(), './node_modules')
+          )) +
+          '&includePaths[]=' +
+          (encodeURIComponent(
+            path.resolve(process.cwd(),
+              './node_modules/grommet/node_modules'))
+          )
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
