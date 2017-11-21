@@ -90,14 +90,10 @@ class CountyGraphic extends Component {
 	searchForCounty = (county: string) => {
 		let caseInsensitiveRegEx = new RegExp(county, 'i');
 
-		let arrayOfCountyMatches = fracData.filter(matchesCountyName).filter(isOneOfFirstFiveElements);
+		let arrayOfCountyMatches = fracData.filter(matchesCountyName);
 
 		function matchesCountyName(countyData: Object) {
 			return countyData.county.search(caseInsensitiveRegEx) !== -1;
-		}
-
-		function isOneOfFirstFiveElements(item, index) {
-			return index < 5;
 		}
 
 		this.setState(({

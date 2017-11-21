@@ -17,9 +17,11 @@ class SearchResults extends Component {
 			return <li onClick={this.props.handleClick} key={index} className='SearchResult' tabIndex={index}>{result.county}</li>
 		})
 		return (
-			<ul className='SearchResults'>
-				{results}
-			</ul>
+			<div className="SearchResultsContainer">
+				<ul className='SearchResults'>
+					{results}
+				</ul>
+			</div>
 		)
 	}
 

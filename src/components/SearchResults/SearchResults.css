@@ -1,7 +1,12 @@
+.SearchResultsContainer{
+	position: relative;
+}
+
 .SearchResults{
 	background: white;
 	list-style-type: none;
 	margin: 0;	
+	max-height: 100px;
 	overflow-y: auto;
 	position: absolute;
 	width: 100%;
@@ -9,6 +14,7 @@
 
 .SearchResult{
 	cursor: pointer;
+	height: 20px;
 }
 
 .SearchResult:hover{
