@@ -8,11 +8,11 @@ import './SwimmingPool.css';
 
 export default class SwimmingPool extends Component {
 	props: {
-		opacity: number,
+		fillPercent: number,
 	};
 
 	static defaultProps = {
-		opacity: 0,
+		fillPercent: 0,
 	};
 
 
@@ -20,7 +20,7 @@ export default class SwimmingPool extends Component {
 
 		return (
 			<div className='SwimmingPool'>
-				<WaterLevel opacity={this.props.opacity} />
+				<WaterLevel fillPercent={this.props.fillPercent} />
 			</div>
 
 		)

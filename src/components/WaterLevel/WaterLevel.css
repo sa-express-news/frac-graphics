@@ -5,11 +5,11 @@
     border-radius: 5px;
     height: 100%;
     width: 100%;
-    transition: opacity .2s linear;
+    transition: all .6s linear;
 }
 
 .PoolLine{
-    background:#888;
+    /* background:#888; */
     display: inline-block;
     height: 10vh;
     margin-left: 2vw;

@@ -36,13 +36,13 @@ export default class SwimmingPoolGraphic extends Component {
 
 	generatePoolComponents = (num: number) => {
 		const numberOfFullPools = Math.floor(num);
-		const finalPoolFillLevel = (num - numberOfFullPools) / 10;
+		const finalPoolFillLevel = (num - numberOfFullPools) * 10;
 
 		let pools = Array(numberOfFullPools).fill(0).map((el, index) => {
-			return <SwimmingPool opacity={1} key={Math.random()} />
+			return <SwimmingPool fillPercent={100} key={Math.random()} />
 		});
 
-		pools.push(<SwimmingPool opacity={finalPoolFillLevel} key={Math.random()} />);
+		pools.push(<SwimmingPool fillPercent={finalPoolFillLevel} key={Math.random()} />);
 
 		return pools;
 	}

@@ -6,31 +6,31 @@ import './WaterLevel.css';
 
 export default class WaterLevel extends Component {
 	props: {
-		opacity: number
+		fillPercent: number
 	};
 
 	static defaultProps = {
-		opacity: 0
+		fillPercent: 0
 	};
 
 	state = {
-		opacity: 0
+		fillPercent: 0
 	}
 
 	componentDidMount() {
-		setTimeout(this.updateOpacity, 1000);
+		setTimeout(this.updatefillPercent, 1000);
 	}
 
-	updateOpacity = () => {
+	updatefillPercent = () => {
 		this.setState(() => ({
-			opacity: this.props.opacity
+			fillPercent: this.props.fillPercent
 		}));
 	}
 
 	render() {
 
 		const waterLevelStyle = {
-			opacity: `${this.state.opacity}`
+			height: `${this.state.fillPercent}%`
 		};
 
 		return (
