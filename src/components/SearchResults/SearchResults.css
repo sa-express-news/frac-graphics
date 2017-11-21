@@ -1,8 +1,7 @@
 .SearchResults{
 	background: white;
 	list-style-type: none;
-	margin: 0;
-	max-height: 20vh;
+	margin: 0;	
 	overflow-y: auto;
 	position: absolute;
 	width: 100%;
@@ -10,4 +9,8 @@
 
 .SearchResult{
 	cursor: pointer;
+}
+
+.SearchResult:hover{
+	background: #E8E8E8;
 }

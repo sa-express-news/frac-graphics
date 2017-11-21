@@ -76,7 +76,6 @@ class CountyGraphic extends Component {
 	handleSearchInput = (event: Event) => {
 		let target = event.target;
 		if (event.keyCode === 40 && this.state.searchResults.length > 0) {
-			console.log('searching');
 		}
 		else if (target instanceof HTMLInputElement) {
 			let searchInput = target.value;
@@ -91,10 +90,14 @@ class CountyGraphic extends Component {
 	searchForCounty = (county: string) => {
 		let caseInsensitiveRegEx = new RegExp(county, 'i');
 
-		let arrayOfCountyMatches = fracData.filter(matchesCountyName);
+		let arrayOfCountyMatches = fracData.filter(matchesCountyName).filter(isOneOfFirstFiveElements);
 
 		function matchesCountyName(countyData: Object) {
 			return countyData.county.search(caseInsensitiveRegEx) !== -1;
+		}
+
+		function isOneOfFirstFiveElements(item, index) {
+			return index < 5;
 		}
 
 		this.setState(({
@@ -113,9 +116,9 @@ class CountyGraphic extends Component {
 		if (target instanceof HTMLInputElement) {
 			let searchInput = target.value;
 
-			if (searchInput.length > 0) {
-				this.searchForCounty(searchInput);
-			}
+
+			this.searchForCounty(searchInput);
+
 		}
 	}
 
@@ -142,10 +145,10 @@ class CountyGraphic extends Component {
 
 		let axisStyle = {
 			tickLabels: {
-				fontSize: this.state.isDesktopScreen ? 14 : 21
+				fontSize: this.state.isDesktopScreen ? 14 : 17
 			},
 			label: {
-				fontSize: this.state.isDesktopScreen ? 14 : 21
+				fontSize: this.state.isDesktopScreen ? 14 : 17
 			}
 		};
 
