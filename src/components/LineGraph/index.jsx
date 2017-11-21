@@ -90,7 +90,7 @@ export default class LineGraph extends Component {
                 </div>
                 <p className='region'>{this.props.data[currentFieldIndex].field} region</p>
                 <SwipeContainer arrows={false} swipeLeftFunction={this.moveBackward} swipeRightFunction={this.moveForward}>
-                    <VictoryChart domainPadding={10} animate={{ duration: 500 }} style={{ data: { fill: 'tomato' } }} >
+                    <VictoryChart domainPadding={10} style={{ data: { fill: 'tomato' } }} >
                         <VictoryAxis label={'Year'} tickValues={this.props.yearValues} style={axisStyle} />
                         <VictoryAxis dependentAxis label={this.props.dependentAxisLabel} tickFormat={this.props.dependentAxisFormat} style={axisStyle} />
                         <VictoryLine data={this.props.data[currentFieldIndex].data} style={{ data: { stroke: '#379D92' } }} />
