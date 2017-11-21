@@ -156,7 +156,7 @@ class CountyGraphic extends Component {
 					<SearchResults results={this.state.searchResults} handleClick={this.handleSearchResultClick} />
 				</div>
 				<h3 className="County">{this.state.currentCounty.county} County</h3>
-				<VictoryChart domainPadding={10} animate={{ duration: 500 }} style={axisStyle}>
+				<VictoryChart domainPadding={{ x: [30, 0] }} animate={{ duration: 500 }} style={axisStyle}>
 					<VictoryAxis label={'Year'} tickValues={[2011, 2012, 2013, 2014, 2015, 2016, 2017]} style={axisStyle} />
 					<VictoryAxis dependentAxis label={'Millions of gallons'} tickFormat={(data) => (`${Math.floor(data) / 1000000}`)} style={axisStyle} />
 					<VictoryBar data={this.state.currentCounty.data} style={{ data: { fill: '#379D92' } }} />
