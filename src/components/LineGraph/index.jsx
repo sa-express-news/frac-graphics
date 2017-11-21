@@ -67,10 +67,10 @@ export default class LineGraph extends Component {
 
         let axisStyle = {
             tickLabels: {
-                fontSize: this.state.isDesktopScreen ? 14 : 21
+                fontSize: this.state.isDesktopScreen ? 14 : 17
             },
             label: {
-                fontSize: this.state.isDesktopScreen ? 14 : 21
+                fontSize: this.state.isDesktopScreen ? 14 : 17
             }
         };
 
@@ -80,7 +80,7 @@ export default class LineGraph extends Component {
         }
 
         let selectors = this.props.data.map((field, index) => {
-            return <p onClick={() => this.updateIndex(index)} key={index}>{field.field}</p>
+            return <p className={`${index === this.state.currentFieldIndex ? 'active' : ''}`} onClick={() => this.updateIndex(index)} key={index}>{field.field}</p>
         });
 
         return (
