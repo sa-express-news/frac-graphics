@@ -13,15 +13,15 @@ export default class SwimmingPoolGraphic extends Component {
 		fields: [
 			{
 				name: 'Permian Basin',
-				avgWater: 9974654.011
+				avgWater: 10496987.86
 			},
 			{
 				name: 'Eagle Ford',
-				avgWater: 8375422.219
+				avgWater: 9733680.75
 			},
 			{
 				name: 'Barnett Shale',
-				avgWater: 2498724.452
+				avgWater: 1846267.89
 			}
 
 		],
